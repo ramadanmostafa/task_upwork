@@ -61,3 +61,39 @@ func TestWholeStory(t *testing.T) {
 	}
 
 }
+
+func TestStoryStats(t *testing.T) {
+	table := []struct {
+		input         string
+		shortestWord  string
+		longestWord   string
+		avgWordLength float32
+		listWord      []string
+	}{
+		{"23-ab-48-caba-560-hahaaa", "ab", "hahaaa", 4.0, []string{"caba"}},
+		{"23-a-48-bc-de-fg-560-rhjk", "a", "rhjk", 2.2, []string{"bc", "de", "fg"}},
+		{"23-a-48-bcd-ded-fgd-560-rhjk", "a", "rhjk", 2.8, []string{"bcd", "ded", "fgd"}},
+	}
+
+	for _, testCase := range table {
+		shortestWord, longestWord, avgWordLength, listWord := main.StoryStats(testCase.input)
+		if shortestWord != testCase.shortestWord || longestWord != testCase.longestWord || avgWordLength != testCase.avgWordLength || !assertListEqual(listWord, testCase.listWord) {
+			t.Errorf(
+				"StoryStats was incorrect for input %s", testCase.input,
+			)
+		}
+	}
+
+}
+
+func assertListEqual(lst1 []string, lst2 []string) bool {
+	if len(lst1) != len(lst2) {
+		return false
+	}
+	for i := 0; i < len(lst1); i++ {
+		if lst1[i] != lst2[i] {
+			return false
+		}
+	}
+	return true
+}

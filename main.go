@@ -64,3 +64,14 @@ func WholeStory(str string) string {
 	}
 	return strings.TrimSpace(story)
 }
+
+// returns four things:
+// -the shortest word
+// -the longest word
+// -the average word length
+// -the list (or empty list) of all words from the story that have the length the same as the average length rounded up and down.
+// complexity Medium, time O(N)
+func StoryStats(str string) (string, string, float32, []string) {
+	
+	return "", "", 2.2, []string {}
+}
