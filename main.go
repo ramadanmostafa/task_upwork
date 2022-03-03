@@ -33,3 +33,10 @@ func TestValidity(str string) bool {
 func main() {
 
 }
+
+// takes the string, and returns the average number from all the numbers
+// complexity Easy, time O(N)
+func AverageNumber(str string) float32 {
+	
+	return 2.2
+}
