@@ -72,6 +72,38 @@ func WholeStory(str string) string {
 // -the list (or empty list) of all words from the story that have the length the same as the average length rounded up and down.
 // complexity Medium, time O(N)
 func StoryStats(str string) (string, string, float32, []string) {
-	
-	return "", "", 2.2, []string {}
+	words := strings.Split(str, "-")
+	var shortestWord string
+	var longestWord string
+	numWords := 0
+	totalLenWords := 0
+	var listWord []string
+	for _, word := range words {
+		if _, err := strconv.Atoi(word); err == nil {
+			continue
+		} else {
+			if shortestWord == "" || len(word) < len(shortestWord) {
+				shortestWord = word
+			}
+			if longestWord == "" || len(word) > len(longestWord) {
+				longestWord = word
+			}
+			numWords++
+			totalLenWords += len(word)
+		}
+	}
+	avgWordLength := float32(totalLenWords) / float32(numWords)
+	avgWordLengthRoundedUp := int(avgWordLength) + 1
+	avgWordLengthRoundedDown := int(avgWordLength)
+	for _, word := range words {
+		if _, err := strconv.Atoi(word); err == nil {
+			continue
+		} else {
+			if len(word) == avgWordLengthRoundedDown || len(word) == avgWordLengthRoundedUp {
+
+				listWord = append(listWord, word)
+			}
+		}
+	}
+	return shortestWord, longestWord, avgWordLength, listWord
 }
