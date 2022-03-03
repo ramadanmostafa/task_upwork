@@ -53,5 +53,14 @@ func AverageNumber(str string) float32 {
 // e.g. story called for the string 1-hello-2-world should return text: "hello world"
 // complexity easy, time O(N)
 func WholeStory(str string) string {
-	return str
+	words := strings.Split(str, "-")
+	story := ""
+	for _, word := range words {
+		if _, err := strconv.Atoi(word); err == nil {
+			continue
+		} else {
+			story += word + " "
+		}
+	}
+	return strings.TrimSpace(story)
 }
