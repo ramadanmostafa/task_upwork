@@ -37,6 +37,14 @@ func main() {
 // takes the string, and returns the average number from all the numbers
 // complexity Easy, time O(N)
 func AverageNumber(str string) float32 {
-	
-	return 2.2
+	words := strings.Split(str, "-")
+	numCount := 0
+	sum := 0
+	for _, word := range words {
+		if val, err := strconv.Atoi(word); err == nil {
+			numCount++
+			sum += val
+		}
+	}
+	return float32(sum) / float32(numCount)
 }
