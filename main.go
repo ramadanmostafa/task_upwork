@@ -30,10 +30,6 @@ func TestValidity(str string) bool {
 	return true
 }
 
-func main() {
-
-}
-
 // takes the string, and returns the average number from all the numbers
 // complexity Easy, time O(N)
 func AverageNumber(str string) float32 {
@@ -106,4 +102,15 @@ func StoryStats(str string) (string, string, float32, []string) {
 		}
 	}
 	return shortestWord, longestWord, avgWordLength, listWord
+}
+
+// Write a generate function, that takes boolean flag and generates random correct strings if the parameter is true
+// and random incorrect strings if the flag is false.
+// complexity Medium, time O(N)
+func generate(isCorrect bool) string {
+	return ""
+}
+
+
+func main() {
 }
