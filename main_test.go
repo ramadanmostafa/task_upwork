@@ -42,3 +42,22 @@ func TestAverageNumber(t *testing.T) {
 	}
 
 }
+
+func TestWholeStory(t *testing.T) {
+	table := []struct {
+		input string
+		story string
+	}{
+		{"23-ab-48-caba-560-haha", "ab caba haha"},
+		{"", ""},
+		{"1-hello-2-world", "hello world"},
+	}
+
+	for _, testCase := range table {
+		story := main.WholeStory(testCase.input)
+		if story != testCase.story {
+			t.Errorf("WholeStory was incorrect for input %s, got: %v, want: %v.", testCase.input, story, testCase.story)
+		}
+	}
+
+}

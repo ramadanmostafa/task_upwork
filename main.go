@@ -48,3 +48,10 @@ func AverageNumber(str string) float32 {
 	}
 	return float32(sum) / float32(numCount)
 }
+
+// takes the string, and returns a text that is composed from all the text words separated by spaces,
+// e.g. story called for the string 1-hello-2-world should return text: "hello world"
+// complexity easy, time O(N)
+func WholeStory(str string) string {
+	return str
+}
