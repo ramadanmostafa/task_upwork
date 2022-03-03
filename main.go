@@ -1,8 +1,11 @@
 package main
 
 import (
+	"fmt"
+	"math/rand"
 	"strconv"
 	"strings"
+	"time"
 )
 
 // takes the string as an input, and returns boolean flag true if the given string complies with the format,
@@ -108,9 +111,31 @@ func StoryStats(str string) (string, string, float32, []string) {
 // and random incorrect strings if the flag is false.
 // complexity Medium, time O(N)
 func generate(isCorrect bool) string {
-	return ""
+	s1 := rand.NewSource(time.Now().UnixNano())
+	r1 := rand.New(s1)
+	numItems := r1.Intn(10) + 2
+	result := ""
+	for i := 0; i < numItems; i++ {
+		result += fmt.Sprintf("%d-%s-", r1.Intn(1000), RandStringBytes(1 + r1.Intn(10)))
+	}
+	if isCorrect {
+		return strings.Trim(result, "-")
+	} else {
+		return result + "----"
+	}
 }
 
+const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+func RandStringBytes(n int) string {
+	b := make([]byte, n)
+	for i := range b {
+		b[i] = letterBytes[rand.Intn(len(letterBytes))]
+	}
+	return string(b)
+}
 
 func main() {
+	fmt.Println(generate(true))
+	fmt.Println(generate(false))
 }
